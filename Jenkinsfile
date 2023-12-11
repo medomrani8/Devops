@@ -24,12 +24,13 @@ pipeline {
                     sh 'mvn compile'
                 }
             }
+        }
 
             stage('NEXUS') {
                 steps {
                     sh 'mvn clean deploy -DskipTests=true'
                 }
             }
-        }
+
     }
 }

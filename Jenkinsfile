@@ -1,7 +1,6 @@
 pipeline {
     agent any
 
-
     stages {
         stage('GIT') {
             steps {
@@ -25,20 +24,12 @@ pipeline {
                     sh 'mvn compile'
                 }
             }
+
+            stage('NEXUS') {
+                steps {
+                    sh 'mvn clean deploy -DskipTests=true'
+                }
+            }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }
